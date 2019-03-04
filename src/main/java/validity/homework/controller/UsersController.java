@@ -3,6 +3,7 @@ package validity.homework.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import validity.homework.model.User;
+import validity.homework.model.UsersGroup;
 import validity.homework.service.UsersService;
 
 import java.io.IOException;
@@ -23,9 +24,15 @@ public class UsersController {
 	public List<User> getAll() throws IOException {
         return  usersService.getAllUsers();
     }
-	@RequestMapping(value = ResourceConstants.DISTINCT_USERS, method = RequestMethod.GET)
-	public List<User> getDistinctUsers() throws IOException {
-        return  usersService.getAllUsers();
+	/**
+	 * Reads the CSV file identifies two groups of duplicate and unique.
+	 * which is automatically unmarshalled into json 
+	 * @throws IOException
+	 */
+	@RequestMapping(value = ResourceConstants.PROCESS_USERS, method = RequestMethod.GET)
+	public UsersGroup  getDistinctUsers() throws IOException {
+        return  usersService.processUsers();
+        
     }
 	
 	@RequestMapping("/")

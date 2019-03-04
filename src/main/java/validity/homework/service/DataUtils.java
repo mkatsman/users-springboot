@@ -6,10 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -20,6 +23,7 @@ import validity.homework.model.User;
 
 public class DataUtils {
 	final static ObjectMapper mapper = new ObjectMapper();
+
 	public static List<String> getData(String filePath, String titleToSearchFor) throws IOException {
 		Path path = Paths.get(filePath);
 
@@ -39,6 +43,24 @@ public class DataUtils {
 
 		return new ArrayList<>();
 
+	}
+
+	public static  List<User> sortUsersByEmail(List<User> users) {
+		users.sort((User o1, User o2) -> o1.getEmail().compareTo(o2.getEmail()));
+		return users;
+	}
+
+	public static List<User> sortUsersByLastAndFirstName(List<User> users) {
+
+		Collections.sort(users, new Comparator<User>() {
+			@Override
+			public int compare(User u1, User u2) {
+				return new CompareToBuilder().append(u1.getLastName(), u2.getLastName())
+						.append(u1.getFirstName(), u2.getFirstName()).toComparison();
+			}
+		});
+
+		return users;
 	}
 
 	/**
@@ -91,9 +113,9 @@ public class DataUtils {
 	 * @throws IOException
 	 */
 	public static <T> T getObjectFromJson(final String json, final Class<T> clazz)
-			throws JsonParseException, JsonMappingException, IOException { 
-			
-	    return mapper.readValue(json, clazz);
+			throws JsonParseException, JsonMappingException, IOException {
+
+		return mapper.readValue(json, clazz);
 	}
 
 	/**
@@ -108,7 +130,7 @@ public class DataUtils {
 	 */
 	public static <T> List<T> getListfromJson(String json, final Class<T> clazz)
 			throws JsonParseException, JsonMappingException, IOException {
-		
+
 		JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
 		List<T> result = mapper.readValue(json, type);
 		return result;
@@ -124,7 +146,7 @@ public class DataUtils {
 	 * @throws IOException
 	 */
 	public static String convertToJson(Object obj) throws JsonGenerationException, JsonMappingException, IOException {
-	
+
 		return new String(mapper.writeValueAsBytes(obj), "UTF-8");
 	}
 

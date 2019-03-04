@@ -1,22 +1,52 @@
 package validity.homework.model;
 
 import java.util.List;
+import java.util.Set;
 
 public class UsersGroup {
-	private List<User> usersCollection;
+	private List<User> uniqueCollection;
+
+	private List<User> duplicateCollection;
 
 	/**
-	 * @return the usersCollection
+	 * Default constructor
 	 */
-	public List<User> getUsersCollection() {
-		return usersCollection;
+	public UsersGroup() {
+
+	}
+
+	
+	public UsersGroup(List<User> uniqueCollection,  List<User> duplicateCollection) {
+         this.setUniqueCollection(uniqueCollection);
+         this.setDuplicateCollection(duplicateCollection);
 	}
 
 	/**
-	 * @param usersCollection the usersCollection to set
+	 * @return the uniqueCollection
 	 */
-	public void setUsersCollection(List<User> usersCollection) {
-		this.usersCollection = usersCollection;
+	public List<User> getUniqueCollection() {
+		return uniqueCollection;
+	}
+
+	/**
+	 * @param uniqueCollection the uniqueCollection to set
+	 */
+	public void setUniqueCollection(List<User> uniqueCollection) {
+		this.uniqueCollection = uniqueCollection;
+	}
+
+	/**
+	 * @return the duplicateCollection
+	 */
+	public List<User> getDuplicateCollection() {
+		return duplicateCollection;
+	}
+
+	/**
+	 * @param duplicateCollection the duplicateCollection to set
+	 */
+	public void setDuplicateCollection(List<User> duplicateCollection) {
+		this.duplicateCollection = duplicateCollection;
 	}
 
 }
