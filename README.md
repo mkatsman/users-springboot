@@ -1,6 +1,6 @@
 # users-springboot
 
-The project executes is the maven spring boot application, called validity-springboot.
+The project is the maven spring boot application, called validity-springboot.
 The end point is /users/process
 It reads all the data from the advanced.csv file located in src/main/resources, finds the unique by email records, then finds duplicates by email and duplicates by last name.
 Builds the UsersGroup object with the three collections mentioned above, and prints out all three collections.
