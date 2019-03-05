@@ -1,7 +1,6 @@
 package validity.homework.model;
 
 import java.util.List;
-import java.util.Set;
 
 public class UsersGroup {
 	private List<User> uniqueCollection;
