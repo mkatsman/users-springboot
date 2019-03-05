@@ -1,18 +1,21 @@
 package validity.homework.model;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class User {
+
+
+public class User implements Comparable<User> {
 
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", company=" + company
+		return "User [id=" + getId() + ", firstName=" + firstName + ", lastName=" + lastName + ", company=" + company
 				+ ", email=" + email + ", address1=" + address1 + ", address2=" + address2 + ", zip=" + zip + ", city="
 				+ city + ", stateLong=" + stateLong + ", state=" + state + ", phone=" + phone + "]";
 	}
-	String id;
-    String firstName;
+	private String id;
+    private String firstName;
 	private String lastName;
 	private String company;
 	private String email;
@@ -41,7 +44,7 @@ public class User {
  * @param record
  */
 	public User(List<String> record) {
-		this.id = record.get(0);
+		this.setId(record.get(0));
 		
 		this.firstName = record.get(1);
 	
@@ -67,41 +70,6 @@ public class User {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((getLastName() == null) ? 0 : getLastName().hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (getEmail() == null) {
-			if (other.getEmail() != null)
-				return false;
-		} else if (!getEmail().equals(other.getEmail()))
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (getLastName() == null) {
-			if (other.getLastName() != null)
-				return false;
-		} else if (!getLastName().equals(other.getLastName()))
-			return false;
-		return true;
 	}
 	/**
 	 * @return the lastName
@@ -223,5 +191,29 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
+
+		
+
+	
+@Override
+public int compareTo(User other) {
+		
+		 return Comparator.comparing(User::getEmail).compare(this, other);
+			
+				 //.thenComparing(User::getLastName).thenComparing(User::getFirstName)
+				// .compare(this, other);
+	}
 } 

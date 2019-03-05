@@ -40,11 +40,7 @@ public class UsersIntegrationTest {
 		this.base = new URL("http://localhost:" + port + "/");
 	}
 
-	@Test
-	public void getHello() throws Exception {
-		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-		assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
-	}
+	
 
 	@Test
 	public void getAllUsersTest() throws Exception {
@@ -53,28 +49,26 @@ public class UsersIntegrationTest {
 		List<User> users = DataUtils.getListfromJson(response.getBody(), User.class);
 
 		for (User user : users) {
-			System.out.println(user.toString());
+		//	System.out.println(user.toString());
 			if (!checkUser(user))
 				throw new RuntimeException("User info is not complete" + user.toString());
 
 		}
 	}
-
+/**
+ * Executes process user request, which would find unique, duplicates by email and duplicates by full name
+ * @throws Exception
+ */
 	@Test
 	public void processUsersTest() throws Exception {
 		ResponseEntity<String> response = template.getForEntity(base.toString() + ResourceConstants.PROCESS_USERS,
 				String.class);
 		UsersGroup usersGroup = DataUtils.getObjectFromJson(response.getBody(), UsersGroup.class);
-		System.out.println("********* Duplicate Users ***********");
-		for (User user : usersGroup.getDuplicateCollection()) {
-			System.out.println(user.toString());
-
-		}
-		System.out.println("********* Unique Users ***********");
-		for (User user : usersGroup.getUniqueCollection()) {
-			System.out.println(user.toString());
-
-		}
+		Assert.assertTrue(usersGroup.getUniqueCollection().size()>0);
+		Assert.assertTrue(usersGroup.getDuplicateByEmail().size()>0);
+		Assert.assertTrue(usersGroup.getDuplicateByFullName().size()>0);
+		
+	
 	}
 
 	public void checkIncompleteUserPublishedTest() {
@@ -90,7 +84,7 @@ public class UsersIntegrationTest {
 	public List<User> checkUsers(List<User> users) {
 		List<User> incompleteUsers = new ArrayList<User>();
 		for (User user : users) {
-			System.out.println(user.toString());
+	
 			if (!checkUser(user))
 				incompleteUsers.add(user);
 			System.out.println("User info is not complete" + user.toString());

@@ -2,7 +2,6 @@ package validity.homework.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,40 +23,32 @@ public class UsersService {
 	}
 
 	public UsersGroup processUsers() throws IOException {
-		// unique set of nonDuplicates
-		List<User> unique = new ArrayList<User>();
-
+		
+		List<User> users = getAllUsers();
+		
+		
+		Set<User> unique = getUniqueUsers() ;
 		// unique set of duplicates
-		List<User> duplicates = new ArrayList<User>();
-		List<List<String>> records = DataUtils.getDataFromCsv(ResourceConstants.CSV_FILE_PATH);
-		List<User> users = DataUtils.getUsersFromRecords(records);
-		DataUtils.sortUsersByEmail(users);
-		String curr = users.get(0).getEmail();
-		// start from the second element
-		for (int i = 1; i < users.size(); i++) {
-			if (users.get(i).getEmail().trim().equalsIgnoreCase(curr)) {
-				 if(i ==1) {
-				    	//if #1 is duplicate of #0, add 0, as well
-				    	duplicates.add(users.get(0));
-				  }
-				duplicates.add(users.get(i));
-			   
-			} else {
-				 if(i ==1) {
-				    	//if #1 is different from #0, add 0, as well
-				    	unique.add(users.get(0));
-				  }
-				unique.add(users.get(i));
-			}
-			curr = users.get(i).getEmail().trim();
-		}
-		UsersGroup group = new UsersGroup(unique, duplicates);
+	    List<User> duplicatesByEmail = getDuplicatesByEmail(users);
+	    List<User> duplicatesByFullName = getDuplicatesByFullName(users);
+		UsersGroup group = new UsersGroup(new ArrayList<User>(unique), 
+				duplicatesByEmail, duplicatesByFullName );
 		return group;
 	}
 
-	public List<User> getDuplicates() {
-		return null;
+	public List<User> getDuplicatesByEmail(List<User> users) throws IOException {
+		return DataUtils.getDuplicatesByEmail(getAllUsers());
+		
 
 	}
+	public List<User> getDuplicatesByFullName(List<User> users) throws IOException {
+		return DataUtils.getDuplicatesByLastAndFirstName(getAllUsers());
+		
 
+	}
+	public Set<User> getUniqueUsers() throws IOException {
+		return DataUtils.getUnique(getAllUsers());
+		
+
+	}
 }
