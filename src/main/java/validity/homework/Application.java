@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
+/**
+ * The application is run by default at the localhost:8080
+ * @author masha
+ *
+ */
 public class Application {
     
     public static void main(String[] args) {
