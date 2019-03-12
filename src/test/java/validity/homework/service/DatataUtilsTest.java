@@ -16,7 +16,7 @@ import validity.homework.model.User;
 public class DatataUtilsTest {
 
 	@Test
-	public void testData() throws IOException {
+	public void testGetData() throws IOException {
 
 		// get all lines and each line as collection of strings String
 		List<List<String>> records = DataUtils.getDataFromCsv("src/main/resources/advanced.csv");
@@ -66,6 +66,9 @@ public class DatataUtilsTest {
 		System.out.println("Duplicates By Full Name:");
 		duplicates = DataUtils.getDuplicatesByLastAndFirstName(users);
 		duplicates.forEach(System.out::println);
+		String curr = "-999";
+		boolean found = false;
+		
 	}
 
 }

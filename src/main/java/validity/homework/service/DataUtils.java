@@ -24,7 +24,7 @@ import org.codehaus.jackson.type.JavaType;
 
 import com.opencsv.CSVReader;
 
-import validity.homework.controller.ResourceConstants;
+import mysprinboot.controller.ResourceConstants;
 import validity.homework.model.User;
 
 public class DataUtils {

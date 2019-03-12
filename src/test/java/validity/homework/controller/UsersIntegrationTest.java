@@ -1,12 +1,8 @@
 package validity.homework.controller;
 
-import static org.junit.Assert.*;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.hamcrest.Matchers.*;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,6 +15,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import mysprinboot.controller.ResourceConstants;
 import validity.homework.model.User;
 import validity.homework.model.UsersGroup;
 import validity.homework.service.DataUtils;
@@ -67,6 +64,7 @@ public class UsersIntegrationTest {
 		Assert.assertTrue(usersGroup.getUniqueCollection().size()>0);
 		Assert.assertTrue(usersGroup.getDuplicateByEmail().size()>0);
 		Assert.assertTrue(usersGroup.getDuplicateByFullName().size()>0);
+		Assert.assertTrue(usersGroup.getUniqueCollection().size()> usersGroup.getDuplicateByEmail().size());
 		
 	
 	}

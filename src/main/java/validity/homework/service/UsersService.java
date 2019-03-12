@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import validity.homework.controller.ResourceConstants;
+import mysprinboot.controller.ResourceConstants;
 import validity.homework.model.User;
 import validity.homework.model.UsersGroup;
 
@@ -27,8 +27,8 @@ public class UsersService {
 		List<User> users = getAllUsers();
 		
 		
-		Set<User> unique = getUniqueUsers() ;
-		// unique set of duplicates
+		Set<User> unique = getUniqueUsers(users) ;
+		
 	    List<User> duplicatesByEmail = getDuplicatesByEmail(users);
 	    List<User> duplicatesByFullName = getDuplicatesByFullName(users);
 		UsersGroup group = new UsersGroup(new ArrayList<User>(unique), 
@@ -46,8 +46,8 @@ public class UsersService {
 		
 
 	}
-	public Set<User> getUniqueUsers() throws IOException {
-		return DataUtils.getUnique(getAllUsers());
+	public Set<User> getUniqueUsers(List<User> users) throws IOException {
+		return DataUtils.getUnique(users);
 		
 
 	}

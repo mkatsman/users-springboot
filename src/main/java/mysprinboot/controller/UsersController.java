@@ -1,4 +1,4 @@
-package validity.homework.controller;
+package mysprinboot.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +19,11 @@ public class UsersController {
 	@Autowired
 	private UsersService usersService;
 
+	/**
+	 * Gets all the users from the csv file
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value = ResourceConstants.USERS, method = RequestMethod.GET)
 	public List<User> getAll() throws IOException {
 		return usersService.getAllUsers();
