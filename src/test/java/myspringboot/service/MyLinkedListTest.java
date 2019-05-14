@@ -1,6 +1,8 @@
-package validity.homework.service;
+package myspringboot.service;
 
 import org.junit.Before;
+
+import myspringboot.service.MyLinkedList;
 
 public class MyLinkedListTest {
 	MyLinkedList llist = null;

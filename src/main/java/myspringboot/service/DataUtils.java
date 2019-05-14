@@ -1,4 +1,4 @@
-package validity.homework.service;
+package myspringboot.service;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,8 +24,8 @@ import org.codehaus.jackson.type.JavaType;
 
 import com.opencsv.CSVReader;
 
-import mysprinboot.controller.ResourceConstants;
-import validity.homework.model.User;
+import myspringboot.controller.ResourceConstants;
+import myspringboot.model.User;
 
 public class DataUtils {
 	final static ObjectMapper mapper = new ObjectMapper();

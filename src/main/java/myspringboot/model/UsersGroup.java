@@ -1,4 +1,4 @@
-package validity.homework.model;
+package myspringboot.model;
 
 import java.util.List;
 

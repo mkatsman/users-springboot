@@ -1,4 +1,4 @@
-package validity.homework.service;
+package myspringboot.service;
 
 public class MyMathObject
 {

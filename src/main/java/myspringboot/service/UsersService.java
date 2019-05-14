@@ -1,4 +1,4 @@
-package validity.homework.service;
+package myspringboot.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import mysprinboot.controller.ResourceConstants;
-import validity.homework.model.User;
-import validity.homework.model.UsersGroup;
+import myspringboot.controller.ResourceConstants;
+import myspringboot.model.User;
+import myspringboot.model.UsersGroup;
 
 @Service
 public class UsersService {

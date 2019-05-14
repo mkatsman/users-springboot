@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.springframework</groupId>
-	<artifactId>validity-spring-boot</artifactId>
+	<artifactId>my-spring-boot-app</artifactId>
 	<version>0.1.0</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.5.RELEASE</version>
+		<version> 2.0.5.RELEASE</version>
 	</parent>
 
 	<dependencies>
@@ -28,7 +28,7 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
-			<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+		
 		</dependency>
 		<dependency>
 			<groupId>com.opencsv</groupId>

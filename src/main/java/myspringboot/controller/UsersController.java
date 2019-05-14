@@ -1,19 +1,22 @@
-package mysprinboot.controller;
+package myspringboot.controller;
 
-import org.springframework.web.bind.annotation.RestController;
 
-import validity.homework.model.User;
-import validity.homework.model.UsersGroup;
-import validity.homework.service.UsersService;
+
+import myspringboot.model.User;
+import myspringboot.model.UsersGroup;
+import myspringboot.service.UsersService;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/")
 public class UsersController {
 
 	@Autowired

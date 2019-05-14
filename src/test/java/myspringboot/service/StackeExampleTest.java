@@ -1,4 +1,4 @@
-package validity.homework.service;
+package myspringboot.service;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import myspringboot.service.StackExample;
 
 public class StackeExampleTest {
 

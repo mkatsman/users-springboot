@@ -1,13 +1,16 @@
-package validity.homework.service;
+package myspringboot.service;
 
 
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import myspringboot.service.MyMathObject;
 
 
+@Ignore
 public class MyMathObjectTest {
 	MyMathObject mmo =null;
 	@Before

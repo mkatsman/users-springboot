@@ -1,4 +1,4 @@
-package validity.homework.controller;
+package myspringboot.controller;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import mysprinboot.controller.ResourceConstants;
-import validity.homework.model.User;
-import validity.homework.model.UsersGroup;
-import validity.homework.service.DataUtils;
+import myspringboot.controller.ResourceConstants;
+import myspringboot.model.User;
+import myspringboot.model.UsersGroup;
+import myspringboot.service.DataUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

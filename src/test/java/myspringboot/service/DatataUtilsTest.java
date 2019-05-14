@@ -1,4 +1,4 @@
-package validity.homework.service;
+package myspringboot.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
 import org.junit.Assert;
 import org.junit.Test;
 
-import validity.homework.model.User;
+import myspringboot.model.User;
+import myspringboot.service.DataUtils;
 
 public class DatataUtilsTest {
 
