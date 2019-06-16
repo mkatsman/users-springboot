@@ -1,47 +1,61 @@
 package myspringboot.service;
+
 /**
  * Single Linkedlist
+ * 
  * @author masha
  *
  */
 public class MyLinkedList {
 
 	private Node root;
-	
+
 	private Integer size = 0;
-	
+
+	public MyLinkedList() {
+		root = new Node();
+	}
 
 	public void add(Node node) {
-	if(node == null) return;	
-	Node temp  = root;	
-    root =  node;
-    root.setNext(temp);
-    size = size++;
+		if (node == null)
+			return;
+		Node temp = root;
+		root = node;
+		root.setNext(temp);
+		size = size++;
 	}
 
 	public void remove(String value) {
-      Node node = find(value);
-		
+		Node node = find(value);
+
 	}
 
 	public Node find(String value) {
 		Node next = root.getNext();
-		
-		while(true) {
-			if (next == null) break;
-			if(next.getValue().equals(value) ) {
+
+		while (true) {
+			if (next == null)
+				break;
+			if (next.getValue().equals(value)) {
 				return next;
 			}
 		}
 		return null;
 	}
-	
+
 	private class Node {
 		private String value;
-        private Node next;
-        private Node prev;
-    		
-        public Node getNext() {
+		private Node next;
+		private Node prev;
+
+		public Node() {
+			
+		}
+		public Node(String value) {
+			this.value = value;
+		}
+
+		public Node getNext() {
 			return next;
 
 		}
